@@ -1,6 +1,6 @@
 import { Book } from '../entities';
 
-export class CreateBookResponse {
+export class CreateBookResponseDto {
   success: boolean;
 
   createdBook: Book;
