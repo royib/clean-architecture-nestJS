@@ -4,7 +4,7 @@ An in-depth implementation of Clean Architecture using NestJS and typescript
 ## Getting Started
 ### Dependencies
 * mongoDb - you need to provide a valid mongDb connection string.
-  add a new environment variable named CLEAN_NEST_MONGO_CONNECTION_STRING
+add a new environment variable named CLEAN_NEST_MONGO_CONNECTION_STRING
 ```
 export CLEAN_NEST_MONGO_CONNECTION_STRING='valid mongoDB connection string' 
 ```
