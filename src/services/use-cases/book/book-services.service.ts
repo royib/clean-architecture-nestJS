@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Book } from '../../../core/entities';
 import { IDataServices, ICrmServices } from '../../../core/abstracts';
-import { CreateBookDto, UpdateBookDto } from '../../../core/dtos';
-import { BookFactoryService } from './book-factory.service';
 
 @Injectable()
 export class BookServices {

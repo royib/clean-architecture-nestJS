@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
-import { CreateBookDto, UpdateBookDto } from '../core/dtos';
+import { CreateBookDto, UpdateBookDto, CreateBookResponse } from '../core/dtos';
 import { BookServices, BookFactoryService } from '../services/use-cases/book';
 
 @Controller('api/book')
@@ -20,9 +20,20 @@ export class BookController {
   }
 
   @Post()
-  createBook(@Body() bookDto: CreateBookDto) {
-    const book = this.bookFactoryService.createNewBook(bookDto);
-    return this.bookServices.createBook(book);
+  async createBook(@Body() bookDto: CreateBookDto) {
+    const createBookResponse = new CreateBookResponse();
+    try {
+      const book = this.bookFactoryService.createNewBook(bookDto);
+      const createdBook = await this.bookServices.createBook(book);
+
+      createBookResponse.success = true;
+      createBookResponse.createdBook = createdBook;
+    } catch (error) {
+      // report and log error
+      createBookResponse.success = false;
+    }
+
+    return createBookResponse;
   }
 
   @Put(':id')
