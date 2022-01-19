@@ -1,6 +1,6 @@
 # Clean Architecture With NestJS
 ## Description
-It's been a while since my last article on [how to implement clean architecture on Node.js applications](https://betterprogramming.pub/node-clean-architecture-deep-dive-ab68e523554b), [repo](https://github.com/royib/clean-architecture-node).
+It's been a while since my last article on [how to implement clean architecture on Node.js applications](https://betterprogramming.pub/node-clean-architecture-deep-dive-ab68e523554b), [git repo](https://github.com/royib/clean-architecture-node).
 After working with NestJS and TypeScript I thought it was a good idea to come back and write a new article on the subject. This time we are going to take the super power of typescript and the methodologies and tools of NestJS and harness them to our benefits.
 
 Coming from a background of object-oriented languages, it was natural that we
