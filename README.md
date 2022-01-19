@@ -18,7 +18,7 @@ npm install
 npm start
 ```
 ## Authors
-Royi Benita @royib
+Royi Benita
 ## Version History
 * 1.0
 ## License
