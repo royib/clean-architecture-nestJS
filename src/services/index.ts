@@ -1,1 +1,1 @@
-export * from './book/book-services.service';
+export * from './use-cases/book/book-services.service';

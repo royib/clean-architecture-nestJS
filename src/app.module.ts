@@ -6,9 +6,10 @@ import {
   GenreController,
 } from './controllers';
 import { DataServicesModule } from './services/data-services/data-services.module';
-import { BookServicesModule } from './services/book/book-services.module';
-import { AuthorServicesModule } from './services/author/author-services.module';
-import { GenreServicesModule } from './services/genre/genre-services.module';
+import { BookServicesModule } from './services/use-cases/book/book-services.module';
+import { AuthorServicesModule } from './services/use-cases/author/author-services.module';
+import { GenreServicesModule } from './services/use-cases/genre/genre-services.module';
+import { CrmServicesModule } from './services/crm-services/crm-services.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { GenreServicesModule } from './services/genre/genre-services.module';
     BookServicesModule,
     AuthorServicesModule,
     GenreServicesModule,
+    CrmServicesModule,
   ],
   controllers: [
     AppController,
