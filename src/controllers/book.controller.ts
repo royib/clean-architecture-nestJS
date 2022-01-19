@@ -1,10 +1,13 @@
 import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
 import { CreateBookDto, UpdateBookDto } from '../core/dtos';
-import { BookServices } from '../services/use-cases/book/book-services.service';
+import { BookServices, BookFactoryService } from '../services/use-cases/book';
 
 @Controller('api/book')
 export class BookController {
-  constructor(private bookServices: BookServices) {}
+  constructor(
+    private bookServices: BookServices,
+    private bookFactoryService: BookFactoryService,
+  ) {}
 
   @Get()
   async getAll() {
@@ -18,7 +21,8 @@ export class BookController {
 
   @Post()
   createBook(@Body() bookDto: CreateBookDto) {
-    return this.bookServices.createBook(bookDto);
+    const book = this.bookFactoryService.createNewBook(bookDto);
+    return this.bookServices.createBook(book);
   }
 
   @Put(':id')
@@ -26,6 +30,7 @@ export class BookController {
     @Param('id') bookId: string,
     @Body() updateBookDto: UpdateBookDto,
   ) {
-    return this.bookServices.updateBook(bookId, updateBookDto);
+    const book = this.bookFactoryService.updateBook(updateBookDto);
+    return this.bookServices.updateBook(bookId, book);
   }
 }

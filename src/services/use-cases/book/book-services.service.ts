@@ -8,7 +8,7 @@ import { BookFactoryService } from './book-factory.service';
 export class BookServices {
   constructor(
     private dataServices: IDataServices,
-    private bookFactoryService: BookFactoryService,
+
     private crmServices: ICrmServices,
   ) {}
 
@@ -20,10 +20,8 @@ export class BookServices {
     return this.dataServices.books.get(id);
   }
 
-  async createBook(bookDto: CreateBookDto): Promise<Book> {
+  async createBook(book: Book): Promise<Book> {
     try {
-      const book = this.bookFactoryService.createNewBook(bookDto);
-
       // call to our dependencies
       const createdBook = await this.dataServices.books.create(book);
       await this.crmServices.bookAdded(createdBook);
@@ -34,8 +32,7 @@ export class BookServices {
     }
   }
 
-  updateBook(bookId: string, updateBookDto: UpdateBookDto): Promise<Book> {
-    const book = this.bookFactoryService.updateBook(updateBookDto);
+  updateBook(bookId: string, book: Book): Promise<Book> {
     return this.dataServices.books.update(bookId, book);
   }
 }
