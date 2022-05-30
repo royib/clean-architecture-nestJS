@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Book } from '../../../core/entities';
-import { IDataServices, ICrmServices } from '../../../core/abstracts';
+import { Book } from '../../core/entities';
+import { IDataServices, ICrmServices } from '../../core/abstracts';
 
 @Injectable()
-export class BookServices {
+export class BookUseCases {
   constructor(
     private dataServices: IDataServices,
     private crmServices: ICrmServices,
