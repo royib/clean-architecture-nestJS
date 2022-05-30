@@ -1,24 +1,24 @@
 import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
 import { CreateAuthorDto, UpdateAuthorDto } from '../core/dtos';
-import { AuthorServices } from '../services/use-cases/author/author-services.service';
+import { AuthorUseCases } from '../use-cases/author/author.use-case';
 
 @Controller('api/author')
 export class AuthorController {
-  constructor(private authorServices: AuthorServices) {}
+  constructor(private authorUseCases: AuthorUseCases) {}
 
   @Get()
   async getAll() {
-    return this.authorServices.getAllAuthors();
+    return this.authorUseCases.getAllAuthors();
   }
 
   @Get(':id')
   async getById(@Param('id') id: any) {
-    return this.authorServices.getAuthorById(id);
+    return this.authorUseCases.getAuthorById(id);
   }
 
   @Post()
   createAuthor(@Body() authorDto: CreateAuthorDto) {
-    return this.authorServices.createAuthor(authorDto);
+    return this.authorUseCases.createAuthor(authorDto);
   }
 
   @Put(':id')
@@ -26,6 +26,6 @@ export class AuthorController {
     @Param('id') authorId: string,
     @Body() updateAuthorDto: UpdateAuthorDto,
   ) {
-    return this.authorServices.updateAuthor(authorId, updateAuthorDto);
+    return this.authorUseCases.updateAuthor(authorId, updateAuthorDto);
   }
 }

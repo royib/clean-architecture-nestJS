@@ -1,30 +1,30 @@
 import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
 import { CreateBookDto, UpdateBookDto, CreateBookResponseDto } from '../core/dtos';
-import { BookServices, BookFactoryService } from '../services/use-cases/book';
+import { BookUseCases, BookFactoryService } from '../use-cases/book';
 
 @Controller('api/book')
 export class BookController {
   constructor(
-    private bookServices: BookServices,
+    private bookUseCases: BookUseCases,
     private bookFactoryService: BookFactoryService,
   ) {}
 
   @Get()
   async getAll() {
-    return this.bookServices.getAllBooks();
+    return this.bookUseCases.getAllBooks();
   }
 
   @Get(':id')
   async getById(@Param('id') id: any) {
-    return this.bookServices.getBookById(id);
+    return this.bookUseCases.getBookById(id);
   }
 
   @Post()
-  async createBook(@Body() bookDto: CreateBookDto) {
+  async createBook(@Body() bookDto: CreateBookDto) : Promise<CreateBookResponseDto> {
     const createBookResponse = new CreateBookResponseDto();
     try {
       const book = this.bookFactoryService.createNewBook(bookDto);
-      const createdBook = await this.bookServices.createBook(book);
+      const createdBook = await this.bookUseCases.createBook(book);
 
       createBookResponse.success = true;
       createBookResponse.createdBook = createdBook;
@@ -42,6 +42,6 @@ export class BookController {
     @Body() updateBookDto: UpdateBookDto,
   ) {
     const book = this.bookFactoryService.updateBook(updateBookDto);
-    return this.bookServices.updateBook(bookId, book);
+    return this.bookUseCases.updateBook(bookId, book);
   }
 }

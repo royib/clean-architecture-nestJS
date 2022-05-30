@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Author } from '../../../core/entities';
-import { IDataServices } from '../../../core/abstracts';
-import { CreateAuthorDto, UpdateAuthorDto } from '../../../core/dtos';
+import { Author } from '../../core/entities';
+import { IDataServices } from '../../core/abstracts';
+import { CreateAuthorDto, UpdateAuthorDto } from '../../core/dtos';
 import { AuthorFactoryService } from './author-factory.service';
 
 @Injectable()
-export class AuthorServices {
+export class AuthorUseCases {
   constructor(
     private dataServices: IDataServices,
     private authorFactoryService: AuthorFactoryService,

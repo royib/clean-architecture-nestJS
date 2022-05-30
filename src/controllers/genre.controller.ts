@@ -1,24 +1,24 @@
 import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
 import { CreateGenreDto, UpdateGenreDto } from '../core/dtos';
-import { GenreServices } from '../services/use-cases/genre/genre-services.service';
+import { GenreUseCases } from '../use-cases/genre/genre.use-case';
 
 @Controller('api/genre')
 export class GenreController {
-  constructor(private genreServices: GenreServices) {}
+  constructor(private genreUseCases: GenreUseCases) {}
 
   @Get()
   async getAll() {
-    return this.genreServices.getAllGenres();
+    return this.genreUseCases.getAllGenres();
   }
 
   @Get(':id')
   async getById(@Param('id') id: any) {
-    return this.genreServices.getGenreById(id);
+    return this.genreUseCases.getGenreById(id);
   }
 
   @Post()
   createGenre(@Body() genreDto: CreateGenreDto) {
-    return this.genreServices.createGenre(genreDto);
+    return this.genreUseCases.createGenre(genreDto);
   }
 
   @Put(':id')
@@ -26,6 +26,6 @@ export class GenreController {
     @Param('id') genreId: string,
     @Body() updateGenreDto: UpdateGenreDto,
   ) {
-    return this.genreServices.updateGenre(genreId, updateGenreDto);
+    return this.genreUseCases.updateGenre(genreId, updateGenreDto);
   }
 }
