@@ -17,5 +17,18 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+  "exclude": [
+    "node_modules", "build","tests","_mock"
+  ],
+  "include": [
+    "**/*.ts","**/*.spec.ts","**/*.test.ts", "**/*.d.ts"
+  ],
+  "types": [
+    "node",
+    "jest",
+    "nest",
+    "typescript",
+    "@types/testing-library__jest-dom",
+  ]
 }

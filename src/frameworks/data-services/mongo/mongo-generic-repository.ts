@@ -3,6 +3,7 @@ import { IGenericRepository } from '../../../core';
 
 export class MongoGenericRepository<T> implements IGenericRepository<T> {
   private _repository: Model<T>;
+
   private _populateOnFind: string[];
 
   constructor(repository: Model<T>, populateOnFind: string[] = []) {
@@ -15,7 +16,10 @@ export class MongoGenericRepository<T> implements IGenericRepository<T> {
   }
 
   get(id: any): Promise<T> {
-    return this._repository.findById(id).populate(this._populateOnFind).exec();
+    return this._repository
+      .findById(id)
+      .populate(this._populateOnFind)
+      .exec() as Promise<T>;
   }
 
   create(item: T): Promise<T> {
