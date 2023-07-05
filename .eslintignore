@@ -1,0 +1,7 @@
+**/tests/**
+**/_mock/**
+**/.github/**
+**/.vscode/**
+**/.husky/**
+**/coverage/**
+**/node_modules/**

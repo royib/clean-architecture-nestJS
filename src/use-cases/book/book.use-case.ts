@@ -18,6 +18,7 @@ export class BookUseCases {
   }
 
   async createBook(book: Book): Promise<Book> {
+    // eslint-disable-next-line no-useless-catch
     try {
       // call to our dependencies
       const createdBook = await this.dataServices.books.create(book);

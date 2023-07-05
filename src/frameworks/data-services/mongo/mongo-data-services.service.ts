@@ -17,7 +17,9 @@ export class MongoDataServices
   implements IDataServices, OnApplicationBootstrap
 {
   authors: MongoGenericRepository<Author>;
+
   books: MongoGenericRepository<Book>;
+
   genres: MongoGenericRepository<Genre>;
 
   constructor(

@@ -1,0 +1,8 @@
+# Add files here to ignore them from prettier formatting
+/coverage
+.vscode
+.bundle
+.husky
+.github
+node_modules
+dist
